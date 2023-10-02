@@ -1,5 +1,10 @@
 {
   "devDependencies": {
     "cypress": "^13.3.0"
+  },
+  "dependencies": {
+    "eslint-plugin-cypress": "^2.15.1",
+    "prettier": "^3.0.3",
+    "simple-encryptor": "^4.0.0"
   }
 }

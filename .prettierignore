@@ -1,0 +1,6 @@
+# Ignore Generated Files:
+package-lock.json
+secret/*
+runner-results/*
+mochawesome-report/*
+node_modules/*
