@@ -22,23 +22,4 @@
 //
 //
 // -- This will overwrite an existing command --
-
-import { loginpage } from "./pageobject/loginpage"
-
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-const encryptor= require("simple-encryptor")(Cypress.env("infor"))
-
-
-const loginpg=new loginpage 
-Cypress.Commands.add('login',()=>{
-    cy.visit("/")
-    cy.get('.orangehrm-login-container').should('be.visible')
-    loginpg.getUserNameLbl().should('have.text',"Username")
-    loginpg.getPasswordLbl().last().should('have.text',"Password")
-
-    
-    loginpg.setUserNameInput().type(Cypress.env("userName"),{log:false})
-    loginpg.setPasswordInput().type(encryptor.decrypt(Cypress.env("password")),{log:false})
-    loginpg.submitBtn().click();
-    
-})
