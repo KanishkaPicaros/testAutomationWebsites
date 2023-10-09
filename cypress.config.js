@@ -19,5 +19,6 @@ module.exports = defineConfig({
     userName: "Admin",
     password: "73884defd0b7bf9a01abdc8a2b341e6b048f3efb0009d025d67279a9716cdad312c9e610476bb454e7452f937322aea3IZppvoTY7c2q2PcncNnNLw==",
 
-  }
+  },
+  fixturesFolder:"orange_hrm/fixtures"
 });

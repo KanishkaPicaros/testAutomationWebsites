@@ -24,12 +24,15 @@
 // -- This will overwrite an existing command --
 
 import { loginpage } from "./pageobject/loginpage"
+import { dashboardpage } from "./pageobject/dashboardpage"
 
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 const encryptor= require("simple-encryptor")(Cypress.env("infor"))
 
 
 const loginpg=new loginpage 
+const dashboardpg=new dashboardpage
+
 Cypress.Commands.add('login',()=>{
     cy.visit("/")
     cy.get('.orangehrm-login-container').should('be.visible')
@@ -41,4 +44,10 @@ Cypress.Commands.add('login',()=>{
     loginpg.setPasswordInput().type(encryptor.decrypt(Cypress.env("password")),{log:false})
     loginpg.submitBtn().click();
     
+})
+
+Cypress.Commands.add('logout',()=>{
+    dashboardpg.getLogoutDorpdown().should('be.visible')
+    dashboardpg.getLogoutDorpdown().click()
+    dashboardpg.getLogoutBtn().click({force:true})
 })
