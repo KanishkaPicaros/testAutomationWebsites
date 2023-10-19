@@ -4,3 +4,4 @@ secret/*
 runner-results/*
 mochawesome-report/*
 node_modules/*
+README.md

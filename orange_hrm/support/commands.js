@@ -25,29 +25,27 @@
 
 import { loginpage } from "./pageobject/loginpage"
 import { dashboardpage } from "./pageobject/dashboardpage"
+import "cypress-wait-until"
 
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-const encryptor= require("simple-encryptor")(Cypress.env("infor"))
+const encryptor = require("simple-encryptor")(Cypress.env("infor"))
 
+const loginpg = new loginpage()
+const dashboardpg = new dashboardpage()
 
-const loginpg=new loginpage 
-const dashboardpg=new dashboardpage
+Cypress.Commands.add("login", () => {
+  cy.visit("/")
+  cy.get(".orangehrm-login-container").should("be.visible")
+  loginpg.getUserNameLbl().should("have.text", "Username")
+  loginpg.getPasswordLbl().last().should("have.text", "Password")
 
-Cypress.Commands.add('login',()=>{
-    cy.visit("/")
-    cy.get('.orangehrm-login-container').should('be.visible')
-    loginpg.getUserNameLbl().should('have.text',"Username")
-    loginpg.getPasswordLbl().last().should('have.text',"Password")
-
-    
-    loginpg.setUserNameInput().type(Cypress.env("userName"),{log:false})
-    loginpg.setPasswordInput().type(encryptor.decrypt(Cypress.env("password")),{log:false})
-    loginpg.submitBtn().click();
-    
+  loginpg.setUserNameInput().type(Cypress.env("userName"), { log: false })
+  loginpg.setPasswordInput().type(encryptor.decrypt(Cypress.env("password")), { log: false })
+  loginpg.submitBtn().click()
 })
 
-Cypress.Commands.add('logout',()=>{
-    dashboardpg.getLogoutDorpdown().should('be.visible')
-    dashboardpg.getLogoutDorpdown().click()
-    dashboardpg.getLogoutBtn().click({force:true})
+Cypress.Commands.add("logout", () => {
+  dashboardpg.getLogoutDorpdown().should("be.visible")
+  dashboardpg.getLogoutDorpdown().click()
+  dashboardpg.getLogoutBtn().click({ force: true })
 })

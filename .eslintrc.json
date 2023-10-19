@@ -1,20 +1,20 @@
 {
-    "plugins": ["cypress"],
-    "rules": {
-      "cypress/assertion-before-screenshot": "warn",
-      "cypress/no-assigning-return-values": "error",
-      "cypress/no-async-tests": "error",
-      "cypress/no-pause": "error",
-      "cypress/no-unnecessary-waiting": "warn"
-    },
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module"
-    },
-    "env": {
-      "cypress/globals": true,
-      "node": true,
-      "es6": true
-    },
-    "extends": ["plugin:cypress/recommended", "eslint:recommended"]
-  }
+  "plugins": ["cypress"],
+  "rules": {
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-async-tests": "error",
+    "cypress/no-pause": "error",
+    "cypress/no-unnecessary-waiting": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "env": {
+    "cypress/globals": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": ["plugin:cypress/recommended", "eslint:recommended"]
+}

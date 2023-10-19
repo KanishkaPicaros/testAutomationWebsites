@@ -1,24 +1,47 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require("cypress")
+const { beforeRunHook, afterRunHook } = require("cypress-mochawesome-reporter/lib")
 
 module.exports = defineConfig({
-  
-  
+  reporter: "cypress-mochawesome-reporter",
+
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: "custom-title",
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+    reportDir: "orange_hrm/reports",
+    override: true,
+  },
+
+  fixturesFolder: "orange_hrm/fixtures",
   e2e: {
     baseUrl: "https://opensource-demo.orangehrmlive.com",
     userName: "Admin",
-    password: "73884defd0b7bf9a01abdc8a2b341e6b048f3efb0009d025d67279a9716cdad312c9e610476bb454e7452f937322aea3IZppvoTY7c2q2PcncNnNLw==",
+    password:
+      "73884defd0b7bf9a01abdc8a2b341e6b048f3efb0009d025d67279a9716cdad312c9e610476bb454e7452f937322aea3IZppvoTY7c2q2PcncNnNLw==",
     specPattern: "orange_hrm/specs/*",
     supportFile: "orange_hrm/support/e2e.js",
-    setupNodeEvents() {
-      // implement node event listeners here
+
+    setupNodeEvents(on) {
+      require("cypress-mochawesome-reporter/plugin")(on)
+      on("before:run", async details => {
+        console.log("override before:run")
+        await beforeRunHook(details)
+      })
+
+      on("after:run", async () => {
+        console.log("override after:run")
+        await afterRunHook()
+      })
     },
   },
 
-  env:{
-    infor: 'real secret keys should be long and random',
+  env: {
+    infor: "real secret keys should be long and random",
     userName: "Admin",
-    password: "73884defd0b7bf9a01abdc8a2b341e6b048f3efb0009d025d67279a9716cdad312c9e610476bb454e7452f937322aea3IZppvoTY7c2q2PcncNnNLw==",
-
+    password:
+      "73884defd0b7bf9a01abdc8a2b341e6b048f3efb0009d025d67279a9716cdad312c9e610476bb454e7452f937322aea3IZppvoTY7c2q2PcncNnNLw==",
   },
-  fixturesFolder:"orange_hrm/fixtures"
-});
+  //fixturesFolder: "orange_hrm/fixtures",
+})
