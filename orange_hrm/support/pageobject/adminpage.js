@@ -3,6 +3,10 @@ export class AdminPage {
     return cy.get(".oxd-button")
   }
 
+  // getSearchButton(){
+  //   cy.get("button[type='submit']")
+  // }
+
   getTopMenueItems() {
     return cy.get(".oxd-topbar-body-nav-tab-item")
   }

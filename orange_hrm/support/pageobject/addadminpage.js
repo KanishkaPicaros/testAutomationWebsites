@@ -35,7 +35,7 @@ export class addadminpage {
     return cy.get("[type='submit']")
   }
 
-  gettoasterMessage() {
+  getToasterMessage() {
     return cy.get(".oxd-toast-content p")
   }
 
