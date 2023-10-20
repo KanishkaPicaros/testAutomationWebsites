@@ -1,13 +1,11 @@
 //import { error } from "cypress/types/jquery"
 import { addadminpage } from "../support/pageobject/addadminpage"
 import { AdminPage } from "../support/pageobject/adminpage"
-import { adminEditPage } from "../support/pageobject/adminEditPage"
+
 const adminPg = new AdminPage()
 const addAdminPg = new addadminpage()
-const adminEditPg = new adminEditPage()
 const encryptor = require("simple-encryptor")(Cypress.env("infor"))
-const random = '1' + Math.random().toString().substr(2, 9)
-
+const random = "1" + Math.random().toString().substr(2, 9)
 
 describe("Test admin page functionalities and items", () => {
   beforeEach(() => {
@@ -91,12 +89,12 @@ describe("Test admin page functionalities and items", () => {
   //   cy.intercept("GET ","/web/index.php/api/**/admin/users?**").as("recordLoad")
   //   cy.wait("@recordLoad")
   //   adminPg.getUnchangedAdminCheckbox().find()
-  // }) 
+  // })
 
   it("Add new system user", () => {
     navigateToAdmin()
     cy.intercept("GET", "/web/index.php/api/**/pim/employees?**").as("pause1")
-    cy.intercept("GET","/web/index.php/api/**/admin/validation/user-name?**").as("displayToast")
+    cy.intercept("GET", "/web/index.php/api/**/admin/validation/user-name?**").as("displayToast")
     adminPg.getAdminpageButtons().eq(2).should("have.text", " Add ").click({ force: true })
     addAdminPg.getPageHeader().last().should("have.text", "Add User")
     addAdminPg.getAddUserDropdowns().first().click()
@@ -113,8 +111,11 @@ describe("Test admin page functionalities and items", () => {
     addAdminPg.getdropdownList().should("be.visible").first().click()
     addAdminPg.getaddadminpageList().last().click()
     addAdminPg.getaddAdminpgalistVal().should("be.visible").eq(1).click()
-    
-    addAdminPg.getAddUserDetailsText().eq(1).type("Maylie"+random)
+
+    addAdminPg
+      .getAddUserDetailsText()
+      .eq(1)
+      .type("Maylie" + random)
     addAdminPg
       .getAddUserDetailsText()
       .eq(2)
@@ -127,7 +128,6 @@ describe("Test admin page functionalities and items", () => {
     addAdminPg.getAction().should("have.text", " Save ").click()
     cy.wait("@displayToast")
     addAdminPg.getToasterMessage().contains("Success")
-    
   })
 
   it("Edit added employee", () => {
@@ -140,7 +140,7 @@ describe("Test admin page functionalities and items", () => {
     // adminPg.getUnchangedAdminCheckbox().find("[type='checkbox']").last().click()
     // cy.wait("@filterResults")
     // adminPg.getAdminModifyButtons().last().click()
-    
+
     // adminEditPg.getPageHeader().contains("Edit User")
   })
 })
