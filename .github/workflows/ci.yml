@@ -17,4 +17,11 @@ jobs:
           start: npm start 
           browser: chrome
 
+      - name: Uploading Artifacts
+        uses: actions/upload-artifact@v3
+        if: always()    
+        with:
+          name: cypress-execution-report
+          path: orange_hrm/reports
+          retention-days: 30
 
