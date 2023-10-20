@@ -8,8 +8,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: precommit
+        run: npm ci
+        run: npm run precommit
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           start: npm start 
+          browser: chrome
+
 
