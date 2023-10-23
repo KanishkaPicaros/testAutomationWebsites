@@ -35,5 +35,5 @@ jobs:
           subject: Workflow finished
           body: Job completed job.status
           to: kanishkapicaros@gmail.com, pulkit.rana221@gmail.com
-    from: Me    
+          from: kanishkapicaros@gmail.com    
 
