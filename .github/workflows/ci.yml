@@ -27,7 +27,7 @@ jobs:
 
       - name: Send some mail
         uses: wadeww/send-email-action@master
-          with:
+        with:
           server_address: smtp.gmail.com
           port: 465
           username: kanishkapicaros@gmail.com
