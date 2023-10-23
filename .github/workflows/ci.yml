@@ -31,7 +31,7 @@ jobs:
           server_address: smtp.gmail.com
           port: 465
           username: kanishkapicaros@gmail.com
-          password: secrets.MAIL_PASSWORD
+          password: Shellshock
           subject: Workflow finished
           body: Job completed job.status
           to: kanishkapicaros@gmail.com, pulkit.rana221@gmail.com
