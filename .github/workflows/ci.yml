@@ -25,3 +25,15 @@ jobs:
           path: orange_hrm/reports
           retention-days: 30
 
+      - name: Send some mail
+        uses: wadeww/send-email-action@master
+          with:
+          server_address: smtp.gmail.com
+          port: 465
+          username: kanishkapicaros@gmail.com
+          password: secrets.MAIL_PASSWORD
+          subject: Workflow finished
+          body: Job completed job.status
+          to: kanishkapicaros@gmail.com, pulkit.rana221@gmail.com
+    from: Me    
+
