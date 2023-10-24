@@ -14,6 +14,8 @@
     "cypress-xpath": "^2.0.1",
     "eslint-plugin-cypress": "^2.15.1",
     "prettier": "^3.0.3",
-    "simple-encryptor": "^4.0.0"
+    "simple-encryptor": "^4.0.0",
+    
+    "multiple-cucumber-html-reporter": "^3.5.0"
   }
 }
