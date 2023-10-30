@@ -26,7 +26,7 @@ jobs:
           retention-days: 30
 
       - name: Send some mail
-        uses: wadeww/send-email-action@master
+        uses: softprops/action-email@v1
         with:
           server_address: smtp.gmail.com
           port: 465
@@ -34,6 +34,6 @@ jobs:
           password: 
           subject: Workflow finished
           body: Job completed job.status
-          to: kanishkapicaros@gmail.com, pulkit.rana221@yopmail.com
-          from: kanishkapicaros@gmail.com    
+          to: kanishkapicaros112@yopmail.com, pulkit.rana221@yopmail.com
+          from: kanishkapicaros112@yopmail.com   
 
