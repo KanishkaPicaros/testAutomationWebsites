@@ -29,6 +29,7 @@ import "cypress-wait-until"
 
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 const encryptor = require("simple-encryptor")(Cypress.env("infor"))
+require('cypress-downloadfile/lib/downloadFileCommand')
 
 const loginpg = new loginpage()
 const dashboardpg = new dashboardpage()

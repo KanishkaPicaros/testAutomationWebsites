@@ -4,7 +4,7 @@ runner-results
 multi-reporter-config.json
 mochawesome-report
 public/build
-*/downloads/
+*/mydownloads/
 !**/downloads/.keep
 */reports/
 !**/reports/.keep

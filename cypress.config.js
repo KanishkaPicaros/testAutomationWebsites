@@ -1,11 +1,14 @@
 const { defineConfig } = require("cypress")
 const { beforeRunHook, afterRunHook } = require("cypress-mochawesome-reporter/lib")
+const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
+
+
 
 module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
 
-  video: "true",
-  videoCompression:"10", //lower the number higher the quality. Can be set from 1 -55
+  video: true,
+  videoCompression:10, //lower the number higher the quality. Can be set from 1 -55
   viewportWidth:1080,
   viewportHeight: 720,
   
@@ -45,6 +48,7 @@ module.exports = defineConfig({
         console.log("override after:run")
         await afterRunHook()
       })
+      on('task', {downloadFile})
     },
   },
 

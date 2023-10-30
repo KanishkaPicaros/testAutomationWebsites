@@ -7,9 +7,9 @@ describe("TestCases to validate dashboard functionality", () => {
     cy.login()
   })
 
-  afterEach(() => {
-    cy.logout()
-  })
+  // afterEach(() => {
+  //   cy.logout()
+  // })
   it("Login to OrangeHRM", () => {
     dashboardpg.getDashboardItems().should("have.length", 7)
 
@@ -25,11 +25,27 @@ describe("TestCases to validate dashboard functionality", () => {
         .and.include("Employee Distribution by Location")
     })
 
+
+
+
+
     NavigateToAdmin()
     dashboardpg.getTopMenue().should("be.visible")
     //dashboardpg.getTopMenueItems().should('have.length',7)
     // dashboardpg.getAdminpageButtons().eq(1).should('have.text',' Search ')
     // dashboardpg.getAdminpageButtons().eq(2).should('have.text',' Add ')
+  })
+
+
+  it.only("Selecting files",()=>{
+    dashboardpg.getMenuElements().contains("My Info").click({ force: true })
+  dashboardpg.getMenuElements().contains("My Info").should("have.class", "oxd-main-menu-item active")
+    myinforpg.getmyinforbtn().click({force:true})
+    cy.get(".oxd-file-input").selectFile("profpic.jpg",{force:true})
+    cy.get(".oxd-button--secondary.orangehrm-left-space").click({force:true})
+    cy.downloadFile('https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg','mydownloads','example.jpg')
+
+
   })
 })
 function NavigateToAdmin() {
