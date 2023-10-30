@@ -1,6 +1,8 @@
 import { dashboardpage } from "../support/pageobject/dashboardpage"
+import { myinfor } from "../support/pageobject/myinforpage"
 
 const dashboardpg = new dashboardpage()
+const myinforpg=new myinfor()
 describe("TestCases to validate dashboard functionality", () => {
   beforeEach(() => {
     //load website base url through command.js
